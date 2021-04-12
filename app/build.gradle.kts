@@ -79,6 +79,7 @@ dependencies {
     implementation(Dependencies.NAVIGATION_FRAGMENT)
     implementation(Dependencies.LOGGING)
     implementation(Dependencies.DAGGER)
+    implementation(Dependencies.PLAY_CORE)
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
 }

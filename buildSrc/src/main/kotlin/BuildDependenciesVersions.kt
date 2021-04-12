@@ -17,4 +17,5 @@ object BuildDependenciesVersions {
     const val RETROFIT = "2.9.0"
     const val LOGGING = "4.9.0"
     const val DATABINDING = "3.1.4"
+    const val PLAY_CORE = "1.8.2"
 }
