@@ -1,3 +1,17 @@
 <resources>
+
     <string name="app_name">ConverterTest</string>
+
+    <!-- region converter screen -->
+    <string name="open_menu">Open menu</string>
+    <string name="currency_converter">Currency converter</string>
+    <string name="you_send">You send</string>
+    <string name="they_get">They get</string>
+    <!-- endregion converter screen -->
+
+    <!-- region rated dialog -->
+    <string name="choose_currency">Choose a currency</string>
+    <string name="ok">OK</string>
+    <string name="cancel">CANCEL</string>
+    <!-- endregion rated dialog -->
 </resources>

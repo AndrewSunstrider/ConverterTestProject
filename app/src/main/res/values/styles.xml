@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.ConverterTest" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- region Converter Screen -->
+    <style name="ConverterFragmentTitle">
+        <item name="android:textColor">@color/dim_purple_color</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontWeight">400</item>
+    </style>
+
+    <style name="ConverterFragmentInputField">
+        <item name="android:textColor">@color/dark_purple_color</item>
+        <item name="android:textSize">@dimen/text_size_28</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="backgroundTint">@color/color_input_field</item>
+        <item name="android:textCursorDrawable">@drawable/bg_input_field_cursor</item>
+    </style>
+
+    <style name="СurrencyListButton">
+        <item name="iconGravity">textStart</item>
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="android:textColor">@color/bright_purple_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="iconTint">@null</item>
+        <item name="android:clickable">true</item>
+        <item name="drawableRightCompat">@drawable/ic_arrow_down</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="rippleColor">@color/dim_purple_color</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="SwapButton">
+        <item name="iconPadding">@dimen/dp_0</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="iconTint">@null</item>
+        <item name="android:clickable">true</item>
+        <item name="icon">@drawable/ic_swap</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="rippleColor">@color/dim_purple_color</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <!-- endregion Converter Screen -->
+
+    <!-- region Rates dialog -->
+    <style name="RatesDialogStyle">
+        <item name="android:background">@drawable/bg_rates_dialog</item>
+        <item name="android:elevation">@dimen/dp_4</item>
+    </style>
+
+    <style name="RatesButton">
+        <item name="android:insetBottom">@dimen/dp_0</item>
+        <item name="android:insetTop">@dimen/dp_0</item>
+        <item name="android:insetLeft">@dimen/dp_0</item>
+        <item name="android:insetRight">@dimen/dp_0</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/bright_purple_color</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="iconTint">@null</item>
+        <item name="android:clickable">true</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="rippleColor">@color/dim_purple_color</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <!-- endregion Rates dialog -->
+</resources>
