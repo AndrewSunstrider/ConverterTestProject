@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- region converter screen -->
+    <color name="dark_purple_color">#04003D</color>
+    <color name="dim_purple_color">#B8B6D1</color>
+    <color name="bright_purple_color">#635AEA</color>
+    <!-- endregion converter screen -->
+
+    <!-- region rates dialog -->
+    <color name="black_alpha_87">#DE000000</color>
+    <color name="black_alpha_12">#1F000000</color>
+    <!-- endregion converter screen -->
 </resources>
