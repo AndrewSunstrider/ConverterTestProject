@@ -37,6 +37,7 @@
         <item name="iconGravity">textStart</item>
         <item name="android:textSize">@dimen/text_size_20</item>
         <item name="android:textColor">@color/bright_purple_color</item>
+        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
         <item name="iconTint">@null</item>
@@ -72,6 +73,7 @@
         <item name="android:insetLeft">@dimen/dp_0</item>
         <item name="android:insetRight">@dimen/dp_0</item>
         <item name="iconGravity">textStart</item>
+        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">@dimen/text_size_14</item>
         <item name="android:textColor">@color/bright_purple_color</item>
         <item name="android:textStyle">bold</item>

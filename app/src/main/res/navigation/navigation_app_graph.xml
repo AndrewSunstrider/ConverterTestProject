@@ -6,6 +6,15 @@
     <fragment
         android:id="@+id/converterFragment"
         android:name="com.andrewsunstrider.convertertest.features.converter.ConverterFragment"
-        android:label="ConverterFragment" />
+        android:label="ConverterFragment" >
+        <action
+            android:id="@+id/action_converterFragment_to_ratesDialogFragment"
+            app:destination="@id/ratesDialogFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/ratesDialogFragment"
+        android:name="com.andrewsunstrider.convertertest.features.converter.RatesDialogFragment"
+        android:label="RatesDialogFragment" />
 
 </navigation>
