@@ -14,7 +14,7 @@
 
     <dialog
         android:id="@+id/ratesDialogFragment"
-        android:name="com.andrewsunstrider.convertertest.features.converter.RatesDialogFragment"
+        android:name="com.andrewsunstrider.convertertest.features.rates.RatesDialogFragment"
         android:label="RatesDialogFragment" />
 
 </navigation>

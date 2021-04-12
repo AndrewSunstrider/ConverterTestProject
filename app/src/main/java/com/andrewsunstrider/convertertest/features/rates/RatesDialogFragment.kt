@@ -1,4 +1,4 @@
-package com.andrewsunstrider.convertertest.features.converter
+package com.andrewsunstrider.convertertest.features.rates
 
 import android.os.Bundle
 import android.view.LayoutInflater
