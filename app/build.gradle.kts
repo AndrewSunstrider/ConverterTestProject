@@ -30,12 +30,14 @@ android {
         getByName(BuildType.RELEASE) {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
+            buildConfigField("String", "CONVERTER_API_URL", "\"${project.evaluateAPIUrl()}\"")
         }
 
         getByName(BuildType.DEBUG) {
             applicationIdSuffix = BuildTypeDebug.applicationIdSuffix
             versionNameSuffix = BuildTypeDebug.versionNameSuffix
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
+            buildConfigField("String", "CONVERTER_API_URL", "\"${project.evaluateAPIUrl()}\"")
         }
     }
 
@@ -80,6 +82,11 @@ dependencies {
     implementation(Dependencies.LOGGING)
     implementation(Dependencies.DAGGER)
     implementation(Dependencies.PLAY_CORE)
+    implementation(Dependencies.RETROFIT)
+    implementation(Dependencies.RETROFIT_CONVERTER)
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
 }
+
+fun Project.evaluateAPIUrl(): String =
+    properties["testMode"]?.let { "http://localhost:4242" } ?: "https://open.exchangerate-api.com/v6/"
