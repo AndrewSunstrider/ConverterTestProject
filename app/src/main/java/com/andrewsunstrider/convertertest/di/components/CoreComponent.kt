@@ -1,9 +1,13 @@
 package com.andrewsunstrider.convertertest.di.components
 
 import android.content.Context
+import com.andrewsunstrider.convertertest.data.networking.repositories.DefaultRatesRepository
+import com.andrewsunstrider.convertertest.data.networking.services.ConverterService
 import com.andrewsunstrider.convertertest.di.modules.NetworkModule
 import com.andrewsunstrider.convertertest.di.modules.ContextModule
+import com.andrewsunstrider.convertertest.domain.repositories.RatesRepository
 import dagger.Component
+import dagger.Provides
 import javax.inject.Singleton
 
 /**
@@ -26,4 +30,11 @@ interface CoreComponent {
      * @return Context
      */
     fun context(): Context
+
+    /**
+     * Provide dependency graph RatesRepository
+     *
+     * @return RatesRepository
+     */
+    fun ratesRepository(): RatesRepository
 }

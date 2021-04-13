@@ -1,4 +1,4 @@
-package com.andrewsunstrider.convertertest.data.responses
+package com.andrewsunstrider.convertertest.data.networking.responses
 
 import com.google.gson.annotations.SerializedName
 

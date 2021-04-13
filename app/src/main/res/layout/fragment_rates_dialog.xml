@@ -9,9 +9,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/RatesDialogStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="@dimen/dp_40"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="@dimen/dp_40"
+        android:layout_marginBottom="148dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,10 +36,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_rates"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/dp_12"
+            app:layout_constraintBottom_toTopOf="@id/separator_rates"
             app:layout_constraintTop_toBottomOf="@id/title_rates"
-            tools:itemCount="5"
             tools:listitem="@layout/item_rate" />
 
         <View
