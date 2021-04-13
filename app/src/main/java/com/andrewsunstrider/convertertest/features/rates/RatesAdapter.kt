@@ -1,5 +1,6 @@
 package com.andrewsunstrider.convertertest.features.rates
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,12 @@ import com.andrewsunstrider.convertertest.R
 import com.andrewsunstrider.convertertest.data.networking.models.RatesEntity
 import kotlinx.android.synthetic.main.item_rate.view.*
 
+
 class RatesAdapter(
-    private val rates: RatesEntity,
-    private val onEventClickListener: (rateKey: RatesEntity) -> Unit
+    private val rates: RatesEntity
 ) : RecyclerView.Adapter<RatesAdapter.RatesViewHolder>() {
+
+    private var lastSelectedRatePosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rate, parent, false)
@@ -19,18 +22,32 @@ class RatesAdapter(
     }
 
     override fun onBindViewHolder(holder: RatesViewHolder, position: Int) {
-        holder.bind(rates, position)
+        holder.bind(rates, position, lastSelectedRatePosition)
     }
 
     override fun getItemCount(): Int = rates.rates.size
 
-    class RatesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class RatesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val selectedRate = view.selected_rate
+        private val selectButton = view.button_select
 
-        fun bind(ratesView: RatesEntity, position: Int) {
+        @SuppressLint("NotifyDataSetChanged")
+        fun bind(ratesView: RatesEntity, position: Int, selectedPosition: Int) {
             selectedRate.text = ratesView.rates.map {
                 it.key
             }[position]
+
+            when {
+                selectedPosition == -1 && position == 0 -> selectButton.isChecked = true
+                selectedPosition == position -> selectButton.isChecked = true
+                else -> selectButton.isChecked = false
+            }
+
+
+            selectButton.setOnClickListener {
+                lastSelectedRatePosition = adapterPosition
+                notifyDataSetChanged()
+            }
         }
     }
 }

@@ -80,7 +80,7 @@ class RatesDialogFragment : DialogFragment() {
 
     private fun showRates(rates: RatesEntity) {
         rv_rates.layoutManager = LinearLayoutManager(this.requireContext())
-        rv_rates.adapter = RatesAdapter(rates) { /* click listener callback */ }
+        rv_rates.adapter = RatesAdapter(rates)
     }
 
     private fun onInitDependencyInjection() {
