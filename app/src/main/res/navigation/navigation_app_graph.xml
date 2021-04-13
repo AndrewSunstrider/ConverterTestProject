@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/converterFragment"
         android:name="com.andrewsunstrider.convertertest.features.converter.ConverterFragment"
-        android:label="ConverterFragment" >
+        android:label="ConverterFragment">
         <action
             android:id="@+id/action_converterFragment_to_ratesDialogFragment"
             app:destination="@id/ratesDialogFragment" />
@@ -15,6 +15,13 @@
     <dialog
         android:id="@+id/ratesDialogFragment"
         android:name="com.andrewsunstrider.convertertest.features.rates.RatesDialogFragment"
-        android:label="RatesDialogFragment" />
+        android:label="RatesDialogFragment">
+        <argument
+            android:name="rate"
+            app:argType="string" />
+        <argument
+            android:name="listener"
+            app:argType="com.andrewsunstrider.convertertest.features.converter.callback.RatesDialogListener" />
+    </dialog>
 
 </navigation>

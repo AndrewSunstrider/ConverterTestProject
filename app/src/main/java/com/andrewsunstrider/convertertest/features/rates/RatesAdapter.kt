@@ -15,7 +15,7 @@ class RatesAdapter(
     private val rates: RatesEntity
 ) : RecyclerView.Adapter<RatesAdapter.RatesViewHolder>() {
 
-    private var lastSelectedRatePosition = -1
+    private var lastSelectedRatePosition = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RatesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rate, parent, false)
@@ -41,7 +41,7 @@ class RatesAdapter(
             }[position]
 
             when {
-                selectedPosition == -1 && position == 0 -> selectButton.isChecked = true
+                selectedPosition == 0 && position == 0 -> selectButton.isChecked = true
                 selectedPosition == position -> selectButton.isChecked = true
                 else -> selectButton.isChecked = false
             }
@@ -50,6 +50,12 @@ class RatesAdapter(
                 lastSelectedRatePosition = adapterPosition
                 notifyDataSetChanged()
             }
+        }
+
+        fun getRate(): String {
+            return rates.rates.map {
+                it.key
+            }[lastSelectedRatePosition]
         }
     }
 }

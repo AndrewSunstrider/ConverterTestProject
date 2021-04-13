@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andrewsunstrider.convertertest.ConverterApp
 import com.andrewsunstrider.convertertest.R
 import com.andrewsunstrider.convertertest.data.networking.models.RatesEntity
 import com.andrewsunstrider.convertertest.di.components.DaggerRatesComponent
 import com.andrewsunstrider.convertertest.di.modules.RatesModule
+import com.andrewsunstrider.convertertest.features.converter.callback.RatesDialogListener
 import kotlinx.android.synthetic.main.fragment_rates_dialog.*
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -24,6 +26,10 @@ class RatesDialogFragment : DialogFragment() {
 
     @Inject
     lateinit var viewModel: RatesViewModel
+
+    private lateinit var ratesAdapter: RatesAdapter
+    private lateinit var listener: RatesDialogListener
+    private var rate = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +44,7 @@ class RatesDialogFragment : DialogFragment() {
 
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         initListeners()
+        getDataFromArguments()
 
         lifecycleScope.launch {
             viewModel.bind().collect { render(it) }
@@ -53,10 +60,18 @@ class RatesDialogFragment : DialogFragment() {
         )
     }
 
+    private fun getDataFromArguments() {
+        RatesDialogFragmentArgs.fromBundle(requireArguments()).also { args ->
+            rate = args.rate
+            listener = args.listener
+        }
+    }
+
     private fun render(state: RatesDialogState) {
         when (state) {
             RatesDialogState.Idle -> launch()
-            RatesDialogState.Launching -> { }
+            RatesDialogState.Launching -> {
+            }
             is RatesDialogState.Success -> {
                 showRates(state.value)
                 Log.d("Success", "Success -> Auth Activity running.")
@@ -74,11 +89,21 @@ class RatesDialogFragment : DialogFragment() {
         button_cancel.setOnClickListener {
             dismiss()
         }
+        button_ok.setOnClickListener {
+            onOkClick()
+        }
+    }
+
+    private fun onOkClick() {
+        val rate = ratesAdapter.RatesViewHolder(requireView()).getRate()
+        listener.onRatesDialogClosed(rate)
+        dismiss()
     }
 
     private fun showRates(rates: RatesEntity) {
+        ratesAdapter = RatesAdapter(rates)
         rv_rates.layoutManager = LinearLayoutManager(this.requireContext())
-        rv_rates.adapter = RatesAdapter(rates)
+        rv_rates.adapter = ratesAdapter
     }
 
     private fun onInitDependencyInjection() {

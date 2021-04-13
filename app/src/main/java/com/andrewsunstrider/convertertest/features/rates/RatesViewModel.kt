@@ -12,6 +12,7 @@ import javax.inject.Inject
 class RatesViewModel @Inject constructor(
     private val getRates: GetRates
 ) : ViewModel() {
+
     private val states = MutableStateFlow<RatesDialogState>(RatesDialogState.Idle)
 
     fun bind() = states.asStateFlow()
