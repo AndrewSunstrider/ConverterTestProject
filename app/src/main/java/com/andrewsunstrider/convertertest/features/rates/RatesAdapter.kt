@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.item_rate.view.*
 
 
 class RatesAdapter(
+    //change to List<String>
     private val rates: RatesEntity
 ) : RecyclerView.Adapter<RatesAdapter.RatesViewHolder>() {
 
@@ -33,6 +34,8 @@ class RatesAdapter(
 
         @SuppressLint("NotifyDataSetChanged")
         fun bind(ratesView: RatesEntity, position: Int, selectedPosition: Int) {
+
+            //try to do it in viewmodel/usecase
             selectedRate.text = ratesView.rates.map {
                 it.key
             }[position]
@@ -42,7 +45,6 @@ class RatesAdapter(
                 selectedPosition == position -> selectButton.isChecked = true
                 else -> selectButton.isChecked = false
             }
-
 
             selectButton.setOnClickListener {
                 lastSelectedRatePosition = adapterPosition

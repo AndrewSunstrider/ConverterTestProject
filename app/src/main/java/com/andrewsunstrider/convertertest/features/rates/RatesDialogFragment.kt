@@ -16,7 +16,6 @@ import com.andrewsunstrider.convertertest.di.components.DaggerRatesComponent
 import com.andrewsunstrider.convertertest.di.modules.RatesModule
 import kotlinx.android.synthetic.main.fragment_rates_dialog.*
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -34,14 +33,13 @@ class RatesDialogFragment : DialogFragment() {
 
     @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        onInitDependencyInjection()
         super.onViewCreated(view, savedInstanceState)
 
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         initListeners()
-        onInitDependencyInjection()
 
         lifecycleScope.launch {
-            delay(300)
             viewModel.bind().collect { render(it) }
         }
     }
