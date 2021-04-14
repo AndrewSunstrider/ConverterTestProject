@@ -52,9 +52,9 @@ class RatesAdapter(
             }
         }
 
-        fun getRate(): String {
+        fun getRate(): Pair<String, Float> {
             return rates.rates.map {
-                it.key
+                it.toPair()
             }[lastSelectedRatePosition]
         }
     }

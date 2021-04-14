@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andrewsunstrider.convertertest.ConverterApp
 import com.andrewsunstrider.convertertest.R
@@ -29,7 +28,6 @@ class RatesDialogFragment : DialogFragment() {
 
     private lateinit var ratesAdapter: RatesAdapter
     private lateinit var listener: RatesDialogListener
-    private var rate = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,7 +60,6 @@ class RatesDialogFragment : DialogFragment() {
 
     private fun getDataFromArguments() {
         RatesDialogFragmentArgs.fromBundle(requireArguments()).also { args ->
-            rate = args.rate
             listener = args.listener
         }
     }

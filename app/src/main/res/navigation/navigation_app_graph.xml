@@ -17,11 +17,7 @@
         android:name="com.andrewsunstrider.convertertest.features.rates.RatesDialogFragment"
         android:label="RatesDialogFragment">
         <argument
-            android:name="rate"
-            app:argType="string" />
-        <argument
             android:name="listener"
             app:argType="com.andrewsunstrider.convertertest.features.converter.callback.RatesDialogListener" />
     </dialog>
-
 </navigation>

@@ -24,8 +24,8 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
 
     private val ratesDialogListener by lazy {
         object : RatesDialogListener {
-            override fun onRatesDialogClosed(rate: String) {
-                button_choose_send.text = rate
+            override fun onRatesDialogClosed(rate: Pair<String, Float>){
+                button_choose_send.text = rate.first
             }
 
             override fun describeContents(): Int = 0
@@ -70,16 +70,15 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
 
     private fun initListeners() {
         button_choose_send.setOnClickListener {
-            openRatesDialog(button_choose_send.text.toString())
+            openRatesDialog()
         }
         button_choose_get.setOnClickListener {
-            openRatesDialog(button_choose_get.text.toString())
+            openRatesDialog()
         }
     }
 
-    private fun openRatesDialog(rate: String) {
+    private fun openRatesDialog() {
         val action = ConverterFragmentDirections.actionConverterFragmentToRatesDialogFragment(
-            rate,
             ratesDialogListener
         )
         findNavController().navigate(action)
