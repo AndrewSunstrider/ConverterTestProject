@@ -14,6 +14,7 @@ import com.andrewsunstrider.convertertest.R
 import com.andrewsunstrider.convertertest.data.networking.models.RatesEntity
 import com.andrewsunstrider.convertertest.di.components.DaggerRatesComponent
 import com.andrewsunstrider.convertertest.di.modules.RatesModule
+import com.andrewsunstrider.convertertest.features.converter.RatesPosition
 import com.andrewsunstrider.convertertest.features.converter.callback.RatesDialogListener
 import kotlinx.android.synthetic.main.fragment_rates_dialog.*
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -28,6 +29,7 @@ class RatesDialogFragment : DialogFragment() {
 
     private lateinit var ratesAdapter: RatesAdapter
     private lateinit var listener: RatesDialogListener
+    private lateinit var positionType: RatesPosition
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,6 +63,7 @@ class RatesDialogFragment : DialogFragment() {
     private fun getDataFromArguments() {
         RatesDialogFragmentArgs.fromBundle(requireArguments()).also { args ->
             listener = args.listener
+            positionType = args.dialog
         }
     }
 
@@ -93,7 +96,7 @@ class RatesDialogFragment : DialogFragment() {
 
     private fun onOkClick() {
         val rate = ratesAdapter.RatesViewHolder(requireView()).getRate()
-        listener.onRatesDialogClosed(rate)
+        listener.onRatesDialogClosed(Triple(positionType, rate.first, rate.second))
         dismiss()
     }
 

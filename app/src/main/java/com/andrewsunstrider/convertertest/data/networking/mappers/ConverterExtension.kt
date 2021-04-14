@@ -5,5 +5,5 @@ import com.andrewsunstrider.convertertest.data.networking.responses.ConverterRes
 import com.andrewsunstrider.convertertest.features.rates.RatesAdapter
 
 fun ConverterResponse.toEntity() = RatesEntity(
-    rates = rates
+    rates = rates.toSortedMap()
 )

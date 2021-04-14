@@ -1,5 +1,7 @@
 package com.andrewsunstrider.convertertest.data.networking.models
 
+import java.util.*
+
 data class RatesEntity(
-    val rates: HashMap<String, Float>
+    val rates: SortedMap<String, Float>
 )

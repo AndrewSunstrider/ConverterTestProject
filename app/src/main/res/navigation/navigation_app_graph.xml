@@ -19,5 +19,8 @@
         <argument
             android:name="listener"
             app:argType="com.andrewsunstrider.convertertest.features.converter.callback.RatesDialogListener" />
+        <argument
+            android:name="dialog"
+            app:argType="com.andrewsunstrider.convertertest.features.converter.RatesPosition" />
     </dialog>
 </navigation>
