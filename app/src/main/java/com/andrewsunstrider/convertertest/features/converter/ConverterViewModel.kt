@@ -27,22 +27,21 @@ class ConverterViewModel : ViewModel() {
     }
 
     fun setRates(data: Triple<RatesPosition, String, Float>) {
-        calculateValue(data.first)
         when (data.first) {
             RatesPosition.TOP -> {
                 dataView.sendKey = data.second
                 dataView.sendRate = data.third
+                dataView.getValue = calculateValue(RatesPosition.TOP)
                 updateSendKey()
-                updateGetAmount()
             }
             RatesPosition.BOTTOM -> {
                 dataView.getKey = data.second
                 dataView.getRate = data.third
+                dataView.getValue = calculateValue(RatesPosition.TOP)
                 updateGetKey()
-                updateSendAmount()
             }
         }
-
+        updateGetAmount()
     }
 
     private fun updateSendAmount() {

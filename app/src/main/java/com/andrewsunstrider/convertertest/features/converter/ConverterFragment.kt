@@ -25,17 +25,12 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
     private val ratesDialogListener by lazy {
         object : RatesDialogListener {
             override fun onRatesDialogClosed(data: Triple<RatesPosition, String, Float>) {
-                when (data.first) {
-                    RatesPosition.TOP -> button_choose_send.text = data.second
-                    RatesPosition.BOTTOM -> button_choose_get.text = data.second
-                }
                 viewModel.setRates(data)
             }
 
             override fun describeContents(): Int = 0
 
-            override fun writeToParcel(p0: Parcel?, p1: Int) { /* do nothing */
-            }
+            override fun writeToParcel(p0: Parcel?, p1: Int) { /* do nothing */ }
         }
     }
 
@@ -94,16 +89,14 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
             openRatesDialog(RatesPosition.BOTTOM)
         }
         input_field_send.apply {
-            addTextChangedListener(RateEditTextListener(RatesPosition.TOP) {
-                viewModel.setAmount(it.first, it.second)
+            addTextChangedListener(RateEditTextListener { value ->
+                viewModel.setAmount(RatesPosition.TOP, value)
             })
-            setSelection(input_field_get.text.length)
         }
         input_field_get.apply {
-            addTextChangedListener(RateEditTextListener(RatesPosition.BOTTOM) {
-                viewModel.setAmount(it.first, it.second)
+            addTextChangedListener(RateEditTextListener { value ->
+                viewModel.setAmount(RatesPosition.BOTTOM, value)
             })
-            setSelection(input_field_get.text.length)
         }
     }
 
@@ -114,7 +107,6 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
         )
         findNavController().navigate(action)
     }
-
 
     private fun onInitDependencyInjection() {
         DaggerConverterComponent
