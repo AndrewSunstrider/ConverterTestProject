@@ -18,6 +18,13 @@ import dagger.Provides
 class RatesModule(
     private val fragment: RatesDialogFragment
 ) {
+
+    /**
+     * Create a provider method binding for [GetRates].
+     *
+     * @return Instance of GetRates
+     * @see Provides
+     */
     @Provides
     @FeatureScope
     fun provideGetRates(

@@ -31,6 +31,8 @@ android {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
             isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
             buildConfigField("String", "CONVERTER_API_URL", "\"${project.evaluateAPIUrl()}\"")
+            buildConfigField("String", "DATABASE_NAME", "currency_db")
+            buildConfigField("int", "DATABASE_VERSION", "1")
         }
 
         getByName(BuildType.DEBUG) {
@@ -38,6 +40,8 @@ android {
             versionNameSuffix = BuildTypeDebug.versionNameSuffix
             isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
             buildConfigField("String", "CONVERTER_API_URL", "\"${project.evaluateAPIUrl()}\"")
+            buildConfigField("String", "DATABASE_NAME", "\"currency_db\"")
+            buildConfigField("int", "DATABASE_VERSION", "1")
         }
     }
 
@@ -84,10 +88,13 @@ dependencies {
     implementation(Dependencies.PLAY_CORE)
     implementation(Dependencies.RETROFIT)
     implementation(Dependencies.RETROFIT_CONVERTER)
+    implementation(Dependencies.ROOM)
+    implementation(Dependencies.ROOM_KTX)
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
     kapt(AnnotationProcessorsDependencies.ROOM)
 }
 
 fun Project.evaluateAPIUrl(): String =
-    properties["testMode"]?.let { "http://localhost:4242" } ?: "https://open.exchangerate-api.com/v6/"
+    properties["testMode"]?.let { "http://localhost:4242" }
+        ?: "https://open.exchangerate-api.com/v6/"

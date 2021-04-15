@@ -35,9 +35,23 @@ interface CoreComponent {
     fun context(): Context
 
     /**
-     * Provide dependency graph RatesRepository
+     * Provide dependency graph ConverterService
      *
-     * @return RatesRepository
+     * @return ConverterService
      */
-    fun ratesRepository(): RatesRepository
+    fun convertService(): ConverterService
+
+    /**
+     * Provide dependency graph RatesDao
+     *
+     * @return RatesDao
+     */
+    fun ratesDao(): RatesDao
+
+    /**
+     * Provide dependency graph CurrencyRepository
+     *
+     * @return CurrencyRepository
+     */
+    fun currencyRepository(): CurrencyRepository
 }
