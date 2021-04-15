@@ -73,12 +73,19 @@ class RatesDialogFragment : DialogFragment() {
             RatesDialogState.Launching -> {
             }
             is RatesDialogState.Success -> {
-                showRates(state.value)
+                onEmptyRatesCheck(state)
                 Log.d("Success", "Success -> Auth Activity running.")
             }
             is RatesDialogState.Failed -> Log.e("Error", "Error -> ${state.reason}")
             else -> throw IllegalArgumentException("Unknown type for $state.")
         }
+    }
+
+    private fun onEmptyRatesCheck(state: RatesDialogState.Success) {
+        if (state.value.rates.isEmpty()) {
+            rates_main_group.visibility = View.GONE
+            error_message.visibility = View.VISIBLE
+        } else showRates(state.value)
     }
 
     private fun launch() {

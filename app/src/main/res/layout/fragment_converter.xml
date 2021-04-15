@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/main_group"
+        android:id="@+id/converter_main_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="input_field_send,button_swap,title_send,button_choose_send,title_get,appbar,input_field_get,button_choose_get" />

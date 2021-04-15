@@ -63,13 +63,13 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
     }
 
     private fun showLoading() {
-        main_group.visibility = View.GONE
+        converter_main_group.visibility = View.GONE
         converter_progress_bar.visibility = View.VISIBLE
     }
 
     private fun showSuccess() {
         converter_progress_bar.visibility = View.GONE
-        main_group.visibility = View.VISIBLE
+        converter_main_group.visibility = View.VISIBLE
     }
 
     private fun showSendAmount(amount: Float) {

@@ -66,7 +66,6 @@ class ConverterViewModel @Inject constructor(
     }
 
     fun setAmount(type: RatesPosition, amount: Float) {
-        dataView.type = type
         when (type) {
             RatesPosition.TOP -> {
                 if (dataView.sendValue == amount) return
@@ -75,7 +74,7 @@ class ConverterViewModel @Inject constructor(
                 updateGetAmount()
             }
             RatesPosition.BOTTOM -> {
-                if (dataView.sendValue == amount) return
+                if (dataView.getValue == amount) return
                 dataView.getValue = amount
                 dataView.sendValue = calculateValue(type)
                 updateSendAmount()
@@ -90,7 +89,6 @@ class ConverterViewModel @Inject constructor(
 }
 
 data class ShowDataPresentation(
-    var type: RatesPosition = RatesPosition.TOP,
     var sendValue: Float = DEFAULT_AMOUNT,
     var sendRate: Float = DEFAULT_RATE_VALUE,
     var sendKey: String = DEFAULT_RATE,

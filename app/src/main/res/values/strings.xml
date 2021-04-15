@@ -15,5 +15,6 @@
     <string name="cancel">Cancel</string>
     <string name="default_rate_value">0.0</string>
     <string name="default_rate">USD</string>
+    <string name="whoops_something_wrong">Whoops, looks like something went wrong…</string>
     <!-- endregion rated dialog -->
 </resources>
