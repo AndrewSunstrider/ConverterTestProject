@@ -20,6 +20,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/error_message"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_0"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:text="@string/whoops_something_wrong"
+            android:textColor="@color/black_alpha_87"
+            android:textSize="@dimen/text_size_20"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
             android:id="@+id/title_rates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +52,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_rates"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dp_0"
             android:layout_marginTop="@dimen/dp_12"
             app:layout_constraintBottom_toTopOf="@id/separator_rates"
             app:layout_constraintTop_toBottomOf="@id/title_rates"
@@ -74,6 +90,12 @@
             app:layout_constraintBottom_toBottomOf="@id/button_ok"
             app:layout_constraintEnd_toStartOf="@id/button_ok"
             app:layout_constraintTop_toTopOf="@id/button_ok" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/rates_main_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="title_rates,rv_rates,button_cancel,button_ok, separator_rates" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
