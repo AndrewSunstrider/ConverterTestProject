@@ -86,6 +86,7 @@ dependencies {
     implementation(Dependencies.RETROFIT_CONVERTER)
 
     kapt(AnnotationProcessorsDependencies.DAGGER)
+    kapt(AnnotationProcessorsDependencies.ROOM)
 }
 
 fun Project.evaluateAPIUrl(): String =

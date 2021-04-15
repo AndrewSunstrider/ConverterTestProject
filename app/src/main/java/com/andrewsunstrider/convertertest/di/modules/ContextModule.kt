@@ -18,4 +18,5 @@ class ContextModule(private val application: Application) {
     @Singleton
     @Provides
     fun provideContext(): Context = application
+
 }

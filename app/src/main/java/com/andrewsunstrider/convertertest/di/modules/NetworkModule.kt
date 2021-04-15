@@ -1,9 +1,7 @@
 package com.andrewsunstrider.convertertest.di.modules
 
 import com.andrewsunstrider.convertertest.BuildConfig
-import com.andrewsunstrider.convertertest.data.networking.repositories.DefaultRatesRepository
 import com.andrewsunstrider.convertertest.data.networking.services.ConverterService
-import com.andrewsunstrider.convertertest.domain.repositories.RatesRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -67,17 +65,7 @@ class NetworkModule {
      */
     @Singleton
     @Provides
-    fun provideUconfService(retrofit: Retrofit): ConverterService =
+    fun provideConverterService(retrofit: Retrofit): ConverterService =
         retrofit.create(ConverterService::class.java)
 
-    /**
-     * Create a provider method binding for [DefaultRatesRepository]].
-     *
-     * @return Instance of Converter repository.
-     * @see Provides
-     */
-    @Singleton
-    @Provides
-    fun provideDefaultEventsRepository(service: ConverterService) =
-        DefaultRatesRepository(service) as RatesRepository
 }
