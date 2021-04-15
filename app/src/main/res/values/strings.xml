@@ -12,6 +12,8 @@
     <!-- region rated dialog -->
     <string name="choose_currency">Choose a currency</string>
     <string name="ok">OK</string>
-    <string name="cancel">CANCEL</string>
+    <string name="cancel">Cancel</string>
+    <string name="default_rate_value">0.0</string>
+    <string name="default_rate">USD</string>
     <!-- endregion rated dialog -->
 </resources>

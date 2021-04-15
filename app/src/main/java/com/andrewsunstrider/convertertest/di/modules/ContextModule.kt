@@ -2,16 +2,10 @@ package com.andrewsunstrider.convertertest.di.modules
 
 import android.app.Application
 import android.content.Context
-import com.andrewsunstrider.convertertest.di.components.CoreComponent
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-/**
- * Class that contributes to the object graph [CoreComponent].
- *
- * @see Module
- */
 @Module
 class ContextModule(private val application: Application) {
 

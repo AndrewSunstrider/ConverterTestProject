@@ -37,6 +37,7 @@
         android:id="@+id/input_field_send"
         style="@style/ConverterFragmentInputField"
         android:layout_width="0dp"
+        android:hint="@string/default_rate_value"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_28"
         android:layout_marginEnd="@dimen/dp_32"
@@ -49,10 +50,10 @@
         style="@style/СurrencyListButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/default_rate"
         android:layout_marginEnd="@dimen/dp_28"
         app:layout_constraintBottom_toBottomOf="@id/input_field_send"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/input_field_send"
         app:layout_constraintTop_toTopOf="@id/input_field_send"
         tools:text="RUB" />
 
@@ -85,6 +86,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_28"
+        android:hint="@string/default_rate_value"
         android:layout_marginEnd="@dimen/dp_32"
         app:layout_constraintEnd_toStartOf="@id/button_choose_send"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,10 +97,10 @@
         style="@style/СurrencyListButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/default_rate"
         android:layout_marginEnd="@dimen/dp_28"
         app:layout_constraintBottom_toBottomOf="@id/input_field_get"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/input_field_get"
         app:layout_constraintTop_toTopOf="@id/input_field_get"
         tools:text="RUB" />
 
