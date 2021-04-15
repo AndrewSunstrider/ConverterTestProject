@@ -1,15 +1,13 @@
 package com.andrewsunstrider.convertertest.di.modules
 
 import com.andrewsunstrider.convertertest.di.scopes.FeatureScope
-import com.andrewsunstrider.convertertest.domain.repositories.RatesRepository
+import com.andrewsunstrider.convertertest.domain.repositories.CurrencyRepository
 import com.andrewsunstrider.convertertest.domain.usecase.GetRates
 import com.andrewsunstrider.convertertest.extensions.viewModel
 import com.andrewsunstrider.convertertest.features.rates.RatesDialogFragment
 import com.andrewsunstrider.convertertest.features.rates.RatesViewModel
-import com.andrewsunstrider.convertertest.util.AppCoroutineDispatchers
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.Dispatchers
 
 /**
  * Class that contributes to the object graph [RatesComponent].
@@ -20,13 +18,21 @@ import kotlinx.coroutines.Dispatchers
 class RatesModule(
     private val fragment: RatesDialogFragment
 ) {
+
+    /**
+     * Create a provider method binding for [GetRates].
+     *
+     * @return Instance of GetRates
+     * @see Provides
+     */
     @Provides
     @FeatureScope
     fun provideGetRates(
-        repository: RatesRepository
+        currencyRepository: CurrencyRepository
     ) = GetRates(
-        repository = repository
+        currencyRepository = currencyRepository
     )
+
 
     /**
      * Create a provider method binding for [RatesViewModel].
@@ -36,24 +42,12 @@ class RatesModule(
      */
     @Provides
     @FeatureScope
-    fun providesRatesViewModel(getRates: GetRates) =
+    fun providesRatesViewModel(
+        getRates: GetRates
+    ) =
         fragment.viewModel {
             RatesViewModel(
                 getRates = getRates
             )
         }
-
-    /**
-     * Create a provider method binding for [AppCoroutineDispatchers].
-     *
-     * @return Instances of app coroutines dispatchers.
-     * @see Provides
-     */
-    @Provides
-    @FeatureScope
-    fun provideCoroutineDispatchers() = AppCoroutineDispatchers(
-        io = Dispatchers.IO,
-        computation = Dispatchers.Default,
-        main = Dispatchers.Main
-    )
 }

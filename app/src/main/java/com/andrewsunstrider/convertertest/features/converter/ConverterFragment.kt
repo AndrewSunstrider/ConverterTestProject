@@ -48,8 +48,7 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
     private fun render(state: ConverterFragmentState) {
         when (state) {
             ConverterFragmentState.Idle -> launch()
-            ConverterFragmentState.Launching -> { /* do nothing */
-            }
+            ConverterFragmentState.Launching -> { /* TODO: show loading view */ }
             ConverterFragmentState.Success -> Log.d("Success", "Success -> Auth Activity running.")
             is ConverterFragmentState.ShowSendAmount -> showSendAmount(state.value)
             is ConverterFragmentState.ShowGetAmount -> showGetAmount(state.value)

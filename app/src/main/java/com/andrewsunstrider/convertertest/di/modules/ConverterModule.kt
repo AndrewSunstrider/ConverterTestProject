@@ -1,6 +1,8 @@
 package com.andrewsunstrider.convertertest.di.modules
 
 import com.andrewsunstrider.convertertest.di.scopes.FeatureScope
+import com.andrewsunstrider.convertertest.domain.repositories.CurrencyRepository
+import com.andrewsunstrider.convertertest.domain.usecase.FetchRates
 import com.andrewsunstrider.convertertest.extensions.viewModel
 import com.andrewsunstrider.convertertest.features.converter.ConverterFragment
 import com.andrewsunstrider.convertertest.features.converter.ConverterViewModel
@@ -26,8 +28,22 @@ class ConverterModule(
      */
     @Provides
     @FeatureScope
-    fun providesConverterViewModel() =
+    fun providesConverterViewModel(fetchRates: FetchRates) =
         fragment.viewModel {
-            ConverterViewModel()
+            ConverterViewModel(fetchRates = fetchRates)
         }
+
+    /**
+     * Create a provider method binding for [FetchRates].
+     *
+     * @return Instance FetchRates.
+     * @see Provides
+     */
+    @Provides
+    @FeatureScope
+    fun provideFetchRates(
+        currencyRepository: CurrencyRepository
+    ) = FetchRates(
+        currencyRepository = currencyRepository
+    )
 }

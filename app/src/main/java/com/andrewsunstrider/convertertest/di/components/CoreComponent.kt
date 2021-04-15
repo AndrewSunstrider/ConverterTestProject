@@ -1,13 +1,14 @@
 package com.andrewsunstrider.convertertest.di.components
 
 import android.content.Context
-import com.andrewsunstrider.convertertest.data.networking.repositories.DefaultRatesRepository
+import com.andrewsunstrider.convertertest.data.database.RatesDao
 import com.andrewsunstrider.convertertest.data.networking.services.ConverterService
-import com.andrewsunstrider.convertertest.di.modules.NetworkModule
 import com.andrewsunstrider.convertertest.di.modules.ContextModule
-import com.andrewsunstrider.convertertest.domain.repositories.RatesRepository
+import com.andrewsunstrider.convertertest.di.modules.DatabaseModule
+import com.andrewsunstrider.convertertest.di.modules.NetworkModule
+import com.andrewsunstrider.convertertest.di.modules.RepositoriesModule
+import com.andrewsunstrider.convertertest.domain.repositories.CurrencyRepository
 import dagger.Component
-import dagger.Provides
 import javax.inject.Singleton
 
 /**
@@ -19,7 +20,9 @@ import javax.inject.Singleton
 @Component(
     modules = [
         ContextModule::class,
-        NetworkModule::class
+        NetworkModule::class,
+        DatabaseModule::class,
+        RepositoriesModule::class
     ]
 )
 interface CoreComponent {
@@ -32,9 +35,23 @@ interface CoreComponent {
     fun context(): Context
 
     /**
-     * Provide dependency graph RatesRepository
+     * Provide dependency graph ConverterService
      *
-     * @return RatesRepository
+     * @return ConverterService
      */
-    fun ratesRepository(): RatesRepository
+    fun convertService(): ConverterService
+
+    /**
+     * Provide dependency graph RatesDao
+     *
+     * @return RatesDao
+     */
+    fun ratesDao(): RatesDao
+
+    /**
+     * Provide dependency graph CurrencyRepository
+     *
+     * @return CurrencyRepository
+     */
+    fun currencyRepository(): CurrencyRepository
 }
