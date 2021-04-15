@@ -28,7 +28,7 @@ class RatesViewModel @Inject constructor(
         }
     }
 
-    suspend fun getRates(): RatesEntity {
+    private suspend fun getRates(): RatesEntity {
         return getRates.getRates()
     }
 }
