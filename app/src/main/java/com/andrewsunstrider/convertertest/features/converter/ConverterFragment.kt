@@ -48,8 +48,11 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
     private fun render(state: ConverterFragmentState) {
         when (state) {
             ConverterFragmentState.Idle -> launch()
-            ConverterFragmentState.Launching -> { /* TODO: show loading view */ }
-            ConverterFragmentState.Success -> Log.d("Success", "Success -> Auth Activity running.")
+            ConverterFragmentState.Launching -> { showLoading() }
+            ConverterFragmentState.Success -> {
+                showSuccess()
+                Log.d("Success", "Success -> Auth Activity running.")
+            }
             is ConverterFragmentState.ShowSendAmount -> showSendAmount(state.value)
             is ConverterFragmentState.ShowGetAmount -> showGetAmount(state.value)
             is ConverterFragmentState.ShowSendKey -> showSendKey(state.value)
@@ -57,6 +60,16 @@ class ConverterFragment : Fragment(R.layout.fragment_converter) {
             is ConverterFragmentState.Failed -> Log.e("Error", "Error -> ${state.reason}")
             else -> throw IllegalArgumentException("Unknown type for $state.")
         }
+    }
+
+    private fun showLoading() {
+        main_group.visibility = View.GONE
+        converter_progress_bar.visibility = View.VISIBLE
+    }
+
+    private fun showSuccess() {
+        converter_progress_bar.visibility = View.GONE
+        main_group.visibility = View.VISIBLE
     }
 
     private fun showSendAmount(amount: Float) {

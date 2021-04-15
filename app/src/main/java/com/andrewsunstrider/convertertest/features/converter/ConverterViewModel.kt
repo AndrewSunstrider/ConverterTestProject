@@ -27,7 +27,7 @@ class ConverterViewModel @Inject constructor(
             } catch (error: Throwable) {
                 states.value = ConverterFragmentState.Failed(error)
             }
-            ConverterFragmentState.Success
+            states.value = ConverterFragmentState.Success
         }
     }
 

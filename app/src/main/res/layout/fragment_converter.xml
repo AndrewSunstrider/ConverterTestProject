@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ProgressBar
+        android:id="@+id/converter_progress_bar"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
+        android:indeterminateTint="@color/bright_purple_color"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/main_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="input_field_send,button_swap,title_send,button_choose_send,title_get,appbar,input_field_get,button_choose_get" />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
@@ -37,10 +54,10 @@
         android:id="@+id/input_field_send"
         style="@style/ConverterFragmentInputField"
         android:layout_width="0dp"
-        android:hint="@string/default_rate_value"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_28"
         android:layout_marginEnd="@dimen/dp_32"
+        android:hint="@string/default_rate_value"
         app:layout_constraintEnd_toStartOf="@id/button_choose_send"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_send" />
@@ -50,8 +67,8 @@
         style="@style/СurrencyListButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_rate"
         android:layout_marginEnd="@dimen/dp_28"
+        android:text="@string/default_rate"
         app:layout_constraintBottom_toBottomOf="@id/input_field_send"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/input_field_send"
@@ -86,8 +103,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_28"
-        android:hint="@string/default_rate_value"
         android:layout_marginEnd="@dimen/dp_32"
+        android:hint="@string/default_rate_value"
         app:layout_constraintEnd_toStartOf="@id/button_choose_send"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_get" />
@@ -97,11 +114,12 @@
         style="@style/СurrencyListButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/default_rate"
         android:layout_marginEnd="@dimen/dp_28"
+        android:text="@string/default_rate"
         app:layout_constraintBottom_toBottomOf="@id/input_field_get"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/input_field_get"
         tools:text="RUB" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
