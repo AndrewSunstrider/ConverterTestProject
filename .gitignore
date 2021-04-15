@@ -36,6 +36,9 @@ captures/
 # IntelliJ
 *.iml
 .idea/
+.idea/**/gradle.xml
+.idea/**/compiler.xml
+.idea/**/jarRepositories.xml
 
 # Keystore files
 *.keystore
